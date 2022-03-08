@@ -9,10 +9,18 @@
       <div class="container">
         <div class="box">
           <div class="content">
-            <h2>Title: {{ product.title }}</h2>
-            <h3>Category: {{ product.category }}</h3>
+            <h2>
+              Title: <span>{{ product.title }}</span>
+            </h2>
+            <h3>
+              Category: <span>{{ product.category }}</span>
+            </h3>
           </div>
-          <img :src="product.image" alt="" />
+
+          <router-link class="link" :to="'/single/' + product.title"
+            ><img :src="product.image" alt=""
+          /></router-link>
+          <h4>Price: {{ product.price }}</h4>
         </div>
       </div>
     </div>
@@ -26,7 +34,7 @@ export default {
   data() {
     return {
       data: "",
-      api: "https://fakestoreapi.com/products?limit=6",
+      api: "https://fakestoreapi.com/products?limit=10",
     };
   },
   mounted() {
@@ -44,3 +52,16 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+img {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
+img:hover {
+  width: 305px;
+  height: 305px;
+  cursor: pointer;
+}
+</style>
