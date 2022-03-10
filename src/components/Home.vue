@@ -17,7 +17,7 @@
             </h3>
           </div>
 
-          <router-link class="link" :to="'/single/' + product.title"
+          <router-link class="link" :to="'/single/' + product.id"
             ><img :src="product.image" alt=""
           /></router-link>
           <h4>Price: {{ product.price }}</h4>
@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       data: "",
-      api: "https://fakestoreapi.com/products?limit=10",
+      api: "https://fakestoreapi.com/products?limit=7",
     };
   },
   mounted() {

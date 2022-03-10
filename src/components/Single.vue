@@ -4,6 +4,9 @@
     <div class="content">
       <h1>Title: {{ product.title }}</h1>
       <img :src="product.image" alt="" />
+      <h3>Price: ${{ product.price }}</h3>
+      <h3>Category: {{ product.category }}</h3>
+      <div class="desc">Description: {{ product.description }}</div>
     </div>
   </div>
 </template>
@@ -15,10 +18,11 @@ export default {
   data: function () {
     return {
       product: "",
+      api: "https://fakestoreapi.com/products/",
     };
   },
   mounted() {
-    fetch("https://fakestoreapi.com/products/" + this.$route.params.id)
+    fetch(this.api + this.$route.params.id)
       .then((response) => response.json())
       .then((data) => (this.product = data));
   },
@@ -34,5 +38,24 @@ export default {
 img {
   width: 300px;
   height: 350px;
+}
+h1,
+h3 {
+  font-size: 25px;
+  color: #fff;
+}
+.product {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  color: #fff;
+}
+.desc,
+.rate {
+  font-size: 18px;
+  color: gray;
+  width: 1200px;
+  display: flex;
+  margin: 0 auto;
 }
 </style>

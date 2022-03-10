@@ -12,12 +12,61 @@
         loading="lazy"
       ></iframe>
     </div>
+    <div v-if="!isHidden">
+      <div>
+        <label for="name">Име: </label>
+        <input type="text" placeholder="Име" id="name" v-model="name" />
+      </div>
+      <div>
+        <label for="email">Имейл: </label>
+        <input type="email" placeholder="Имейл" id="email" v-model="email" />
+      </div>
+      <div>
+        <label for="phone">Телефон: </label>
+        <input type="number" placeholder="Телефон" id="phone" v-model="phone" />
+      </div>
+      <div>
+        <label for="message">Съобщение: </label>
+        <textarea
+          id="message"
+          cols="30"
+          rows="4"
+          placeholder="Съобщение"
+          v-model="message"
+        ></textarea>
+      </div>
+      <button
+        v-on:click="isHidden = true"
+        style="font-size: 25px; margin-top: 20px"
+      >
+        Изпрати
+      </button>
+    </div>
+    <div v-if="isHidden" id="text-container">
+      <div v-html="doSomething()"></div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "Contact",
+  data() {
+    return {
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+      html: "",
+      isHidden: false,
+    };
+  },
+  methods: {
+    doSomething() {
+      this.html = "Name:" + this.name + "<br>" + "Email: " + this.email;
+      return this.html;
+    },
+  },
 };
 </script>
 

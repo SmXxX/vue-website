@@ -13,8 +13,12 @@ export default {
 </script>
 
 <style>
+#nav {
+  display: flex;
+  justify-content: flex-end;
+}
 .link {
-  margin: 0 15px 0 0;
+  padding: 0 45px 0 0;
   font-size: 25px;
   text-decoration: none;
   color: white;
